@@ -47,12 +47,12 @@ repository. For more information, please refer to the docs at
 https://devcenter.heroku.com/articles/php-support#activation"
     else
         cat "$COMPOSER_LOCK" | python -mjson.tool &> /dev/null || error "Could not parse '$COMPOSER_LOCK'; make sure it's valid!"
-        cat "$COMPOSER_LOCK" | python -c 'import sys, json; l = json.load(sys.stdin); sys.exit(not(l["minimum-stability"] == "stable"));' 2> /dev/null || warning "Your '$COMPOSER' contains a non-'stable' setting
-for 'minimum-stability'. This may cause the installation of
-unstable versions of runtimes and extensions during this deploy.
-It is recommended that you always use stability flags instead,
-even if you have 'prefer-stable' enabled. For more information,
-see https://getcomposer.org/doc/01-basic-usage.md#stability"
+#        cat "$COMPOSER_LOCK" | python -c 'import sys, json; l = json.load(sys.stdin); sys.exit(not(l["minimum-stability"] == "stable"));' 2> /dev/null || warning "Your '$COMPOSER' contains a non-'stable' setting
+#for 'minimum-stability'. This may cause the installation of
+#unstable versions of runtimes and extensions during this deploy.
+#It is recommended that you always use stability flags instead,
+#even if you have 'prefer-stable' enabled. For more information,
+#see https://getcomposer.org/doc/01-basic-usage.md#stability"
     fi
 else
     if [[ ! -f "$COMPOSER" ]]; then
